@@ -1,11 +1,12 @@
 # Introduction to Artificial Intelligence
-# MNIST Dataset
-# Exploration of data
-# By Juan Carlos Rojas
-# Copyright 2025, Texas Tech University - Costa Rica
+# Fashion MNIST Dataset
+# Exploration of data, code by Juan Carlos Rojas
+# Adrian Quiros, Luis Baeza
+
 
 import numpy as np
 import matplotlib.pyplot as plt
+import pickle
 
 # MNIST data and label files unpacker
 # From https://gist.github.com/jurebajt/5157650
@@ -33,8 +34,8 @@ def get_mnist_data_and_labels(images_filename, labels_filename):
                                                    byteorder="big")
             labels.append(int.from_bytes(labels_file.read(1), byteorder="big"))
         # Convert to NumPy arrays
-        data = np.array(data)
-        labels = np.array(labels)
+        data = np.array(data).astype(np.uint8)
+        labels = np.array(labels).astype(np.uint8)
         return data, labels
     finally:
         images_file.close()
@@ -50,29 +51,8 @@ print("Reading test dataset")
 test_data, test_labels = get_mnist_data_and_labels("t10k-images.idx3-ubyte", "t10k-labels.idx1-ubyte")
 test_size = test_data.shape[0]
 
-# Print some information about the training dataset
-print("Training dataset size: ", train_data.shape)
-print("Class histogram: ")
-print(np.histogram(train_labels, 10)[0])
+# Archive the data into a pickle file
+with open("mnist_dataset.pickle", 'wb') as f:
+      pickle.dump([train_data, train_labels, test_data, test_labels], \
+                  f, pickle.HIGHEST_PROTOCOL)
 
-# Print some information about the test dataset
-print("Test dataset size: ", test_data.shape)
-print("Class histogram: ")
-print(np.histogram(test_labels, 10)[0])
-
-#"""
-# Plot a few images
-for idx in range(10):
-  image = train_data[idx].reshape(28,28)
-  plt.figure()
-  plt.imshow(image, cmap="gray_r")
-  plt.title("Label: "+str(train_labels[idx]))
-plt.show()
-#"""
-
-# Plot a histogram of pixel values
-hist, bins = np.histogram(train_data, 50)
-center = (bins[:-1] + bins[1:]) / 2
-width = np.diff(bins)
-plt.bar(center, hist, align='center', width=width)
-plt.show()
