@@ -1,6 +1,6 @@
 # Introduction to Artificial Intelligence
 # Fashion MNIST Dataset
-# Exploration of data, code by Juan Carlos Rojas
+# Preprocessing of data, code by Juan Carlos Rojas
 # Adrian Quiros, Luis Baeza
 
 
