@@ -52,7 +52,7 @@ test_data, test_labels = get_mnist_data_and_labels("t10k-images-idx3-ubyte", "t1
 test_size = test_data.shape[0]
 
 # Archive the data into a pickle file
-with open("mnist_dataset.pickle", 'wb') as f:
+with open("fasion_mnist_dataset.pickle", 'wb') as f:
       pickle.dump([train_data, train_labels, test_data, test_labels], \
                   f, pickle.HIGHEST_PROTOCOL)
 
