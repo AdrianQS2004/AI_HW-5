@@ -44,11 +44,11 @@ def get_mnist_data_and_labels(images_filename, labels_filename):
 
 # Read the train data and labels files
 print("Reading training dataset")
-train_data, train_labels = get_mnist_data_and_labels("train-images.idx3-ubyte", "train-labels.idx1-ubyte")
+train_data, train_labels = get_mnist_data_and_labels("train-images-idx3-ubyte", "train-labels-idx1-ubyte")
 train_size = train_data.shape[0]
 
 print("Reading test dataset")
-test_data, test_labels = get_mnist_data_and_labels("t10k-images.idx3-ubyte", "t10k-labels.idx1-ubyte")
+test_data, test_labels = get_mnist_data_and_labels("t10k-images-idx3-ubyte", "t10k-labels-idx1-ubyte")
 test_size = test_data.shape[0]
 
 # Archive the data into a pickle file
