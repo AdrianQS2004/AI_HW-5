@@ -32,9 +32,6 @@ test_data = test_data / maxval
 model = sklearn.linear_model.LogisticRegression(\
     solver='sag', max_iter = 50) 
 
-#model = sklearn.linear_model.LogisticRegression(\
-#    solver='sag', multi_class="ovr", max_iter = 50) 
-
 print("Training model")
 model.fit(train_data, train_labels)
 
@@ -118,3 +115,5 @@ while (num_displayed < 10):
     plt.imshow(image, cmap="gray_r")
     plt.title("Predicted: "+str(pred[x])+" Correct: "+str(test_labels[x]))
     plt.show()
+
+
