@@ -90,12 +90,31 @@ plt.show()
 
 #"""
 # Display the coefficients as an image, using a diverging colormap (red for negative, green for positive)
-scale = 0.5
-for n in range(num_classes):
-    coef_img = model.coef_[n].reshape(28, 28)
-    coef_img = np.clip(coef_img, -scale, scale)
+#scale = 0.5
+#for n in range(num_classes):
+#    coef_img = model.coef_[n].reshape(28, 28)
+#    coef_img = np.clip(coef_img, -scale, scale)
+#    plt.figure()
+#    plt.imshow(coef_img, cmap="RdYlGn", vmin=-scale, vmax=scale)
+#    plt.title(f"Coefficients (clipped) for class {n}")
+#    plt.colorbar()
+#plt.show()
+
+# Part 5, displaying wrong images
+num_displayed = 0
+x = 0
+while (num_displayed < 10):
+    x += 1
+
+    # Skip correctly predicted 
+    if (pred[x] == test_labels[x]):
+        continue
+
+    num_displayed += 1
+
+    # Display the images
+    image = test_data[x].reshape(28,28)
     plt.figure()
-    plt.imshow(coef_img, cmap="RdYlGn", vmin=-scale, vmax=scale)
-    plt.title(f"Coefficients (clipped) for class {n}")
-    plt.colorbar()
-plt.show()
+    plt.imshow(image, cmap="gray_r")
+    plt.title("Predicted: "+str(pred[x])+" Correct: "+str(test_labels[x]))
+    plt.show()
