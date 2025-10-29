@@ -3,6 +3,11 @@
 # Mnist_SoftmaxRegression1.py, code by Juan Carlos Rojas
 # Adrian Quiros, Luis Baeza
 
+# The main difference to the referenced code is the 
+# added Part 5 which displays wrong images.
+# that specific part 5 code also comes from another program
+# given to us by the professor. 
+
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
@@ -59,43 +64,6 @@ num_classes = len(np.unique(train_labels))
 for n in range(num_classes):
     print("  Class {}: Precision: {:.3f} Recall: {:.3f}".format(n, precision[n], recall[n]))
 
-# Compute the prediction accuracy against the training data
-print("Against training set:")
-pred_training = model.predict(train_data)
-print("  Accuracy:   {:.3f}".format(sklearn.metrics.accuracy_score(train_labels, pred_training)))
-print("  Precision:  {:.3f}".format(sklearn.metrics.precision_score(train_labels, pred_training, average='weighted')))
-print("  Recall:     {:.3f}".format(sklearn.metrics.recall_score(train_labels, pred_training, average='weighted')))
-
-#
-# Explore coefficients
-#
-print("Min coef:", np.min(model.coef_))
-print("Max coef:", np.max(model.coef_))
-print("Coef mean:", np.mean(model.coef_))
-print("Coef stddev: ", np.std(model.coef_))
-
-
-# Plot a histogram of coefficient values
-#"""
-hist, bins = np.histogram(model.coef_, 500)
-center = (bins[:-1] + bins[1:]) / 2
-width = np.diff(bins)
-plt.bar(center, hist, align='center', width=width)
-plt.title("Coefficient values")
-plt.show()
-#"""
-
-#"""
-# Display the coefficients as an image, using a diverging colormap (red for negative, green for positive)
-#scale = 0.5
-#for n in range(num_classes):
-#    coef_img = model.coef_[n].reshape(28, 28)
-#    coef_img = np.clip(coef_img, -scale, scale)
-#    plt.figure()
-#    plt.imshow(coef_img, cmap="RdYlGn", vmin=-scale, vmax=scale)
-#    plt.title(f"Coefficients (clipped) for class {n}")
-#    plt.colorbar()
-#plt.show()
 
 # Part 5, displaying wrong images
 num_displayed = 0

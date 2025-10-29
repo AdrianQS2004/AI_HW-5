@@ -3,13 +3,13 @@
 # Preprocessing of data, code by Juan Carlos Rojas
 # Adrian Quiros, Luis Baeza
 
+# This code is really similar to the referenced code, few changes done 
+# The main difference is that this code ends by writing the data in a pickle file. 
 
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-# MNIST data and label files unpacker
-# From https://gist.github.com/jurebajt/5157650
 # Modified by JCR to work on NumPy arrays
 def get_mnist_data_and_labels(images_filename, labels_filename):
     images_file = open(images_filename, "rb")

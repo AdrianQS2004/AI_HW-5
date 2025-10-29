@@ -3,6 +3,10 @@
 # Mnist_Explore, code by Juan Carlos Rojas
 # Adrian Quiros, Luis Baeza
 
+# Very similar code to the referenced code
+# Main difference is that we deleted some parts that were not needed 
+# for the analysis
+
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
@@ -36,17 +40,6 @@ plt.title("Train dataset pixel values")
 plt.show()
 #"""
 
-# Plot a few images
-"""
-for idx in range(5):
-  image = train_data[idx].reshape(28,28)
-  plt.figure()
-  plt.imshow(image, cmap="gray_r")
-  plt.title("Label: "+str(train_labels[idx]))
-plt.show()
-"""
-
-
 
 # Compute the centroid image from training (the mean pixel value)
 centroid_img = np.mean(train_data, 0)
@@ -63,7 +56,7 @@ plt.title("Centroid Test")
 plt.show()
 
 #"""
-# Compute an average image per class
+# Compute a centroid / average image per class
 class_list = np.unique(train_labels)
 num_classes = len(class_list)
 for classidx in range(num_classes):
